@@ -6,30 +6,45 @@
     <title>Creative Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file link here -->
-    
-    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header style="background: #000; padding: 20px 0; display: flex; justify-content: space-between; align-items: center;">
-        <div class="logo" style="display: flex; align-items: center; gap: 10px;margin-left:30px;">
-            <span style="color: var(--accent-color); font-size: 24px;font-family: 'Dancing Script', cursive !important;">VS</span>
+        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin-left: 30px;">
+            <span style="color: var(--accent-color); font-size: 24px; font-family: 'Dancing Script', cursive;">VS</span>
         </div>
-        <button class="toggle-button" style="background: var(--accent-color); color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; display: none;">☰</button>
-        <nav style="display: flex; gap: 40px;">
+        <!-- Burger icon -->
+        <button id="toggle-button" style="background: red; border: none; font-size: 24px; color: #fff; cursor: pointer; margin-right: 30px; display: none;">☰</button>
+        <!-- Navbar -->
+        <nav id="navbar" style="display: flex; gap: 40px; margin-right: 30px;">
             <a href="#about" style="color: #fff; text-decoration: none;">About</a>
             <a href="#services" style="color: #fff; text-decoration: none;">Services</a>
             <a href="#resume" style="color: #fff; text-decoration: none;">Resume</a>
             <a href="#works" style="color: #fff; text-decoration: none;">Works</a>
+            <a href="#contact" style="color: #fff; text-decoration: none;">Contact</a>
         </nav>
-        <a href="#contact" class="contact-btn" style="background: var(--accent-color); color: #000; padding: 12px 24px; border-radius: 50px; text-decoration: none;margin-right:40px;">Contact Me</a>
     </header>
+    <script>
+        // JavaScript to toggle the navbar
+        const toggleButton = document.getElementById('toggle-button');
+        const navbar = document.getElementById('navbar');
+
+        // Add event listener to the toggle button
+        toggleButton.addEventListener('click', () => {
+            navbar.classList.toggle('active'); // Toggle the active class
+        });
+    </script>
+    
+    
+    
+    
+    
     <div class="container">
         <section class="hero">
             <div class="hero-grid">
                 <div class="profile-image-container">
                     <div class="profile-image">
-                        <img src="INTMCA Varsha Shaji.jpg" alt="Profile Photo">
+                        <img src="/INTMCA Varsha Shaji.jpg" alt="Profile Photo">
                     </div>
                 </div>
                 <div class="hero-text">
@@ -41,7 +56,7 @@
                     <div class="social-links">
                         <a href="https://github.com/varsha-shaji" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/varsha--shaji" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/varsha_mariya?igsh=MWpvODk4M3BsZDV1Yw==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/yourusername" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -255,7 +270,7 @@
                             <div class="menu-dots">
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
-                            <img src="freelancehub.png" alt="Project 2">
+                            <img src="/freelancehub.png" alt="Project 2">
                             <div class="project-content">
                                 <!-- <div class="project-tags">
                                     <span class="tag">Django</span>
@@ -423,7 +438,7 @@
                             <div class="menu-dots">
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
-                            <img src="BakersDelight.png" alt="Project 2">
+                            <img src="/BakersDelight.png" alt="Project 2">
                             <div class="project-content">
                                 <!-- <div class="project-tags">
                                     <span class="tag next">Next.js</span>
@@ -552,6 +567,7 @@
             </div>
         </section>
     </div>
+    
     <script>
         const professions = ["MCA Graduate", "Web Developer", "Full Stack Developer"];
         let index = 0;
@@ -614,30 +630,7 @@
         }
     });
     </script>
-    <script>
-        // Form submission handling
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Form submitted! Add your form handling logic.');
-        });
-    </script>
-    <script>
-    document.querySelector('.toggle-button').addEventListener('click', function() {
-        const nav = document.querySelector('nav');
-        const header = document.querySelector('header');
-
-        // Toggle the active class to show/hide nav
-        nav.classList.toggle('active');
-
-        // Toggle header visibility
-        if (nav.classList.contains('active')) {
-            header.style.display = 'block'; // Show header when nav is active
-        } else {
-            header.style.display = 'none'; // Hide header when nav is not active
-        }
-    });
-    </script>
+    
     <script>
         // Add this script to handle section visibility with different animations
         document.addEventListener('DOMContentLoaded', function() {
@@ -747,5 +740,9 @@
             });
         });
     </script>
+
+
+      
+      
 </body>
 </html>
