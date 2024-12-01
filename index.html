@@ -4,26 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes blink {
+            0% { background-color: rgba(143, 38, 66, 0.5); } /* Initial color */
+            50% { background-color: rgba(143, 38, 66, 0.8); } /* Blinking color */
+            100% { background-color: rgba(143, 38, 66, 0.5); } /* Back to initial color */
+        }
+
+        .profile-image {
+            transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+            animation: blink 1s infinite; /* Apply the blinking animation */
+        }
+    
+        .profile-image:hover {
+            transform: scale(1.1); /* Scale the image on hover */
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px; /* Space for the dot */
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0; /* Position the dot to the left */
+            top: 10px; /* Adjust vertical position */
+            background-color: #8f2642; /* Dot color */
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+
+        .brown-text {
+            color: #8f2642; /* Set the text color to brown */
+        }
+    </style>
 </head>
 <body>
-    <header style="background: #000; padding: 20px 0; display: flex; justify-content: space-between; align-items: center;">
-        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin-left: 30px;">
-            <span style="color: var(--accent-color); font-size: 24px; font-family: 'Dancing Script', cursive;">VS</span>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #000000; ">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="dancing-script accent-color" style="color: #8f2642;font-family: 'Dancing Script', cursive !important;">VS</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resume">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#works">Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- Burger icon -->
-        <button id="toggle-button" style="background: red; border: none; font-size: 24px; color: #fff; cursor: pointer; margin-right: 30px; display: none;">☰</button>
-        <!-- Navbar -->
-        <nav id="navbar" style="display: flex; gap: 40px; margin-right: 30px;">
-            <a href="#about" style="color: #fff; text-decoration: none;">About</a>
-            <a href="#services" style="color: #fff; text-decoration: none;">Services</a>
-            <a href="#resume" style="color: #fff; text-decoration: none;">Resume</a>
-            <a href="#works" style="color: #fff; text-decoration: none;">Works</a>
-            <a href="#contact" style="color: #fff; text-decoration: none;">Contact</a>
-        </nav>
-    </header>
+    </nav>
     <script>
         // JavaScript to toggle the navbar
         const toggleButton = document.getElementById('toggle-button');
@@ -40,28 +93,64 @@
     
     
     <div class="container">
-        <section class="hero">
-            <div class="hero-grid">
-                <div class="profile-image-container">
-                    <div class="profile-image">
-                        <img src="INTMCA Varsha Shaji.jpg" alt="Profile Photo">
+        <section class="hero" style="width: 100%; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; text-align: center;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <div class="profile-image-container" style="margin-bottom: 20px;">
+                            <div class="profile-image">
+                                <img src="INTMCA Varsha Shaji.jpg" alt="Profile Photo" class="img-fluid" style="margin-bottom: 20px;">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-text">
-                    <h1><span class="white-text">Hi, It's </span><span>Varsha Shaji</span></h1>
-                    <p class="subtitle">
-                        <span class="intro">I'm a </span>
-                        <span class="profession" id="profession"></span>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://github.com/varsha-shaji" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/varsha--shaji" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/yourusername" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <div class="col-md-6 text-center text-md-start">
+                        <div class="hero-text" style="margin-top: 20px;">
+                            <h1><span class="white-text">Hi, It's </span><span>Varsha Shaji</span></h1>
+                            <p class="subtitle">
+                                <span class="intro">I'm a </span>
+                                <span class="profession" id="profession"></span>
+                            </p>
+                            <div class="social-links d-flex justify-content-center" style="margin-left:20px;">
+                                <a href="https://github.com/varsha-shaji" aria-label="GitHub" class="me-3"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/varsha--shaji" aria-label="LinkedIn" class="me-3"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/yourusername" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        <span class="profession" id="profession"></span>
+        <script>
+            const professionElement = document.getElementById('profession');
+            const professions = ["MCA Graduate", "Web Developer", "Full Stack Developer"];
+            let index = 0;
+            let charIndex = 0;
 
+            function type() {
+                if (charIndex < professions[index].length) {
+                    professionElement.textContent += professions[index].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100); // Adjust typing speed here
+                } else {
+                    setTimeout(deleteText, 2000); // Pause before deleting
+                }
+            }
+
+            function deleteText() {
+                if (charIndex > 0) {
+                    professionElement.textContent = professions[index].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(deleteText, 50); // Adjust deleting speed here
+                } else {
+                    index = (index + 1) % professions.length; // Move to the next profession
+                    setTimeout(type, 500); // Pause before typing the next profession
+                }
+            }
+
+            // Start the typing effect
+            type();
+        </script>
         <section class="about-section" id="about">
             <div class="about-content">
                 <h2>About Me</h2>
@@ -71,123 +160,164 @@
                 <p>
                     I enjoy collaborating on innovative projects and am always eager to learn and tackle new challenges in the tech field. Outside of coding, I have a passion for music and love traveling, which inspires my creativity and broadens my perspective. I'm excited about the future and look forward to making a positive impact in the tech industry.
                 </p>
-                <a href="/VARSHA SHAJI.pdf" class="resume-btn" download>
+                <a href="VARSHA SHAJI.pdf" class="resume-btn" download>
                     <i class="fas fa-download"></i> Download Resume
                 </a>
             </div>
         </section>
 
         <div class="skills">
-            <div class="skill">
-                <div class="skill-name">MS Office</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 90%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">HTML</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 95%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">CSS</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 90%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">JavaScript</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 85%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">PHP</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 80%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Django</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 75%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Python</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 85%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">C</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 70%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">C++</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 75%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Java</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 80%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Laravel</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 70%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">R</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 65%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">SQL</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 80%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">NoSQL</div>
-                <div class="progress-bar">
-                    <div class="progress" style="--progress-width: 75%;"></div>
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill animated-skill">
+                            <div class="skill-name" style="font-family: 'Arial', sans-serif; font-size: 1.2em;">MS Office</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">HTML</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">CSS</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">JavaScript</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">PHP</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">Django</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">Python</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">C</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">C++</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">Java</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">Laravel</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">R</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill">
+                            <div class="skill-name">SQL</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="skill animated-skill">
+                            <div class="skill-name" style="font-family: 'Arial', sans-serif; font-size: 1.2em;">NoSQL</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--progress-width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
         <section class="skills-section" id="services">
-            <h2>What I Do</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Web Development</h3>
-                    <p>Creating responsive and dynamic web applications using modern technologies.</p>
-                </div>
-                
-                <div class="skill-card">
-                    <i class="fas fa-code-branch"></i>
-                    <h3>Full Stack Development</h3>
-                    <p>Developing both client and server software, ensuring seamless integration.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Django Development</h3>
-                    <p>Building robust web applications using the Django framework.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Mobile Development</h3>
-                    <p>Building cross-platform mobile applications with native performance.</p>
+            <div class="container">
+                <h2 class="text-center mb-5">What I Do</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-card">
+                            <i class="fas fa-code"></i>
+                            <h3 style="font-family: 'Dancing Script', cursive; color: #f1e5e8;">Web Development</h3>
+                            <p style="font-family: 'Arial', sans-serif; color: #555;">Creating responsive and dynamic web applications using modern technologies.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-card">
+                            <i class="fas fa-code-branch"></i>
+                            <h3 style="font-family: 'Dancing Script', cursive;  color: #f1e5e8;">Full Stack Development</h3>
+                            <p style="font-family: 'Arial', sans-serif; color: #555;">Developing both client and server software, ensuring seamless integration.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3 style="font-family: 'Dancing Script', cursive;  color: #f1e5e8;">Django Development</h3>
+                            <p style="font-family: 'Arial', sans-serif; color: #555;">Building robust web applications using the Django framework.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3 style="font-family: 'Dancing Script', cursive; color: #f1e5e8;">Mobile Development</h3>
+                            <p style="font-family: 'Arial', sans-serif; color: #555;">Building cross-platform mobile applications with native performance.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -196,83 +326,102 @@
 
         <section class="resume-section" id="resume">
             <div class="container">
-                <h1>Resume</h1>
-                <p class="resume-intro">I am a passionate web developer with a strong foundation in both front-end and back-end technologies. I enjoy creating dynamic and responsive web applications that provide a seamless user experience. My goal is to continuously learn and improve my skills while contributing to innovative projects.</p>
+                <h1 class="text-center mb-4">Resume</h1>
+                <p class="resume-intro text-center mb-4">I am a passionate web developer with a strong foundation in both front-end and back-end technologies. I enjoy creating dynamic and responsive web applications that provide a seamless user experience. My goal is to continuously learn and improve my skills while contributing to innovative projects.</p>
                 
-                <div class="resume-grid">
+                <div class="row justify-content-center">
                     <!-- Education Column -->
-                    <div class="resume-column">
-                        <div class="column-header">
-                            <i class="fas fa-graduation-cap"></i>
-                            <h2 style="font-family: 'Dancing Script', cursive !important;">Education</h2>
-                        </div>
-                        
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <h3>MCA (Integrated) | 2020 - 2025</h3>
-                                <p class="subtitle">Amal Jyothi College of Engineering (Autonomous)</p>
-                                <p>CGPA: 8.79</p>
+                    <div class="col-12 col-md-6 col-lg-5 mb-4 d-flex justify-content-center">
+                        <div class="text-center">
+                            <div class="column-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h2 style="font-family: 'Dancing Script', cursive !important;">Education</h2>
                             </div>
+                            
+                            <div class="timeline">
+                                <div class="timeline-item text-start" style="margin-bottom: 20px;">
+                                    <div class="timeline-dot"></div>
+                                    <h3>MCA (Integrated) | 2020 - 2025</h3>
+                                    <p class="subtitle">Amal Jyothi College of Engineering (Autonomous)</p>
+                                    <p class="brown-text">CGPA: 8.79</p>
+                                </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <h3>Standard XII | 2018 - 2020</h3>
-                                <p class="subtitle">Govt. Higher Secondary School, Edakkunnam</p>
-                                <p>Percentage: 84%</p>
-                            </div>
+                                <div class="timeline-item text-start" style="margin-bottom: 20px;">
+                                    <div class="timeline-dot"></div>
+                                    <h3>Standard XII | 2018 - 2020</h3>
+                                    <p class="subtitle">Govt. Higher Secondary School, Edakkunnam</p>
+                                    <p class="brown-text">Percentage: 84%</p>
+                                </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <h3>Standard X (SSLC) | 2018</h3>
-                                <p class="subtitle">Assumption High School, Palambra</p>
-                                <p>Percentage: 97%</p>
+                                <div class="timeline-item text-start" style="margin-bottom: 20px;">
+                                    <div class="timeline-dot"></div>
+                                    <h3>Standard X (SSLC) | 2018</h3>
+                                    <p class="subtitle">Assumption High School, Palambra</p>
+                                    <p class="brown-text">Percentage: 97%</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Experience Column -->
-                    <div class="resume-column">
-                        <div class="column-header">
-                            <i class="fas fa-briefcase"></i>
-                            <h2 style="font-family: 'Dancing Script', cursive !important;">Experience/Internship</h2>
-                        </div>
-                        
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <h3>App Development Intern</h3>
-                                <p class="subtitle">Nezuware</p>
-                                <span class="date">1 month | July 2024</span>
+                    <div class="col-12 col-md-6 col-lg-5 mb-4 d-flex justify-content-center">
+                        <div class="text-center">
+                            <div class="column-header">
+                                <i class="fas fa-briefcase"></i>
+                                <h2 style="font-family: 'Dancing Script', cursive !important;">Experience/Internship</h2>
                             </div>
-
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <h3>Web Development Intern</h3>
-                                <p class="subtitle">Exposys Data Labs</p>
-                                <span class="date">1 month | January 2023</span>
-                            </div>
-
                             
+                            <div class="timeline">
+                                <div class="timeline-item text-start" style="margin-bottom: 20px;">
+                                    <div class="timeline-dot"></div>
+                                    <h3>App Development Intern</h3>
+                                    <p class="subtitle">Nezuware</p>
+                                    <span class="date">1 month | July 2024</span>
+                                </div>
+
+                                <div class="timeline-item text-start" style="margin-bottom: 20px;">
+                                    <div class="timeline-dot"></div>
+                                    <h3>Web Development Intern</h3>
+                                    <p class="subtitle">Exposys Data Labs</p>
+                                    <span class="date">1 month | January 2023</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="featured-work" id="works">
-            <div class="featured-work-container">
-                <h2>Featured Work</h2>
-                <div class="projects-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-                    
-                    
-                    <div class="project-card">
-                        <a href="https://freelancehub-5tya.onrender.com/" class="project-link">
-                            <div class="menu-dots">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <img src="freelancehub.png" alt="Project 2">
-                            <div class="project-content">
-                                <!-- <div class="project-tags">
+            <div class="container">
+                <h2 class="text-center mb-5">Featured Work</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="project-card">
+                            <a href="https://freelancehub-5tya.onrender.com/" class="project-link">
+                               
+                                <img src="freelancehub.png" alt="Project 2">
+                                <div class="project-content">
+                                    <!-- <div class="project-tags">
+                                        <span class="tag">Django</span>
+                                        <span class="tag">MariaDB</span>
+                                        <span class="tag">HTML</span>
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">JavaScript</span>
+                                        <span class="tag">Bootstrap</span>
+                                        <span class="tag">jQuery</span>
+                                    </div> -->
+                                    <h3 style="font-size: 1.2em;">FreelanceHub</h3>
+                                    <div class="project-links">
+                                        <a href="https://freelancehub-5tya.onrender.com/" class="link-btn">Website</a>
+                                        <!-- <a href="#github" class="link-btn">Github</a> -->
+                                        <a href="#freelancehub-details" class="link-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-description">
+                                <h3>FreelanceHub - Freelance Job Management System</h3>
+                                <p>FreelanceHub is a web-based platform that connects clients and freelancers, streamlining job posting, proposal management, and project tracking. Clients can post jobs, assign tasks, and review completed work, while freelancers search for projects, submit proposals, and manage tasks efficiently. Key features include real-time chat for seamless communication, a rating system to build trust, secure payment handling, and dynamic portfolio creation from freelancers' resumes. The platform adopts Scrum project management principles, ensuring continuous progress tracking, regular updates, and client feedback to maintain high-quality outcomes. FreelanceHub fosters collaboration and transparency, creating a productive environment for successful project execution.</p>
+                                <div class="project-tags">
                                     <span class="tag">Django</span>
                                     <span class="tag">MariaDB</span>
                                     <span class="tag">HTML</span>
@@ -280,194 +429,175 @@
                                     <span class="tag">JavaScript</span>
                                     <span class="tag">Bootstrap</span>
                                     <span class="tag">jQuery</span>
-                                </div> -->
-                                <h3>FreelanceHub - Freelance Job Management System</h3>
-                                <div class="project-links">
-                                    <a href="https://freelancehub-5tya.onrender.com/" class="link-btn">Website</a>
-                                    <!-- <a href="#github" class="link-btn">Github</a> -->
-                                    <a href="#freelancehub-details" class="link-btn">View Details</a>
                                 </div>
-                            </div>
-                        </a>
-                        <div class="project-description">
-                            <h3>FreelanceHub - Freelance Job Management System</h3>
-                            <p>FreelanceHub is a web-based platform that connects clients and freelancers, streamlining job posting, proposal management, and project tracking. Clients can post jobs, assign tasks, and review completed work, while freelancers search for projects, submit proposals, and manage tasks efficiently. Key features include real-time chat for seamless communication, a rating system to build trust, secure payment handling, and dynamic portfolio creation from freelancers' resumes. The platform adopts Scrum project management principles, ensuring continuous progress tracking, regular updates, and client feedback to maintain high-quality outcomes. FreelanceHub fosters collaboration and transparency, creating a productive environment for successful project execution.</p>
-                            <div class="project-tags">
-                                <span class="tag">Django</span>
-                                <span class="tag">MariaDB</span>
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">Bootstrap</span>
-                                <span class="tag">jQuery</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://freelancehub-5tya.onrender.com/">Website</a>
-                                <!-- <a href="#github">Github</a> -->
+                                <div class="project-links">
+                                    <a href="https://freelancehub-5tya.onrender.com/">Website</a>
+                                    <!-- <a href="#github">Github</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <a href="#jingle-joy" class="project-link">
-                            <div class="menu-dots">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <img src="jingle_joy.png" alt="Jingle Joy">
-                            <div class="project-content">
-                                <!-- <div class="project-tags">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="project-card">
+                            <a href="#jingle-joy" class="project-link">
+                               
+                                <img src="jingle_joy.png" alt="Jingle Joy">
+                                <div class="project-content">
+                                    <!-- <div class="project-tags">
+                                        <span class="tag">Django</span>
+                                        <span class="tag">SQLite</span>
+                                        <span class="tag">HTML</span>
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">jQuery</span>
+                                        <span class="tag">Bootstrap</span>
+                                    </div> -->
+                                    <h3 style="font-size: 1.2em;">Jingle Joy</h3>
+                                    <div class="project-links">
+                                        <a href="#jingle-joy" class="link-btn">Website</a>
+                                        <!-- <a href="#github" class="link-btn">Github</a> -->
+                                        <a href="#jingle-joy-details" class="link-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-description">
+                                <h3>Jingle Joy</h3>
+                                <p>Jingle Joy is an online platform dedicated to Christmas shopping. It offers a wide range of festive products with an intuitive add-to-cart functionality, allowing users to browse, select, and purchase seamlessly. The platform is designed for a joyful shopping experience with a user-friendly interface and a festive theme.</p>
+                                <div class="project-tags">
                                     <span class="tag">Django</span>
                                     <span class="tag">SQLite</span>
                                     <span class="tag">HTML</span>
                                     <span class="tag">CSS</span>
                                     <span class="tag">jQuery</span>
                                     <span class="tag">Bootstrap</span>
-                                </div> -->
-                                <h3>Jingle Joy</h3>
-                                <div class="project-links">
-                                    <a href="#jingle-joy" class="link-btn">Website</a>
-                                    <!-- <a href="#github" class="link-btn">Github</a> -->
-                                    <a href="#jingle-joy-details" class="link-btn">View Details</a>
                                 </div>
-                            </div>
-                        </a>
-                        <div class="project-description">
-                            <h3>Jingle Joy</h3>
-                            <p>Jingle Joy is an online platform dedicated to Christmas shopping. It offers a wide range of festive products with an intuitive add-to-cart functionality, allowing users to browse, select, and purchase seamlessly. The platform is designed for a joyful shopping experience with a user-friendly interface and a festive theme.</p>
-                            <div class="project-tags">
-                                <span class="tag">Django</span>
-                                <span class="tag">SQLite</span>
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">jQuery</span>
-                                <span class="tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#jingle-joy">Website</a>
-                                <!-- <a href="#github">Github</a> -->
+                                <div class="project-links">
+                                    <a href="#jingle-joy">Website</a>
+                                    <!-- <a href="#github">Github</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <a href="#tuneify" class="project-link">
-                            <div class="menu-dots">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <img src="tuniefy.png" alt="Tuneify">
-                            <div class="project-content">
-                                <!-- <div class="project-tags">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="project-card">
+                            <a href="#tuneify" class="project-link">
+                              
+                                <img src="tuniefy.png" alt="Tuneify">
+                                <div class="project-content">
+                                    <!-- <div class="project-tags">
+                                        <span class="tag php">PHP</span>
+                                        <span class="tag mongodb">MongoDB</span>
+                                        <span class="tag html">HTML</span>
+                                        <span class="tag css">CSS</span>
+                                        <span class="tag jquery">jQuery</span>
+                                        <span class="tag bootstrap">Bootstrap</span>
+                                    </div> -->
+                                    <h3 style="font-size: 1.2em;">Tuneify</h3>
+                                    <div class="project-links">
+                                        <a href="#tuneify" class="link-btn">Website</a>
+                                        <!-- <a href="#github" class="link-btn">Github</a> -->
+                                        <a href="#tuneify-details" class="link-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-description">
+                                <h3>Tuneify</h3>
+                                <p>Tuneify is a music streaming platform that lets users discover and enjoy songs, save their favorites, and create personalized playlists. It provides tailored recommendations based on genre and language preferences, ensuring a unique listening experience. The platform offers a smooth interface for effortless navigation and music enjoyment.</p>
+                                <div class="project-tags">
                                     <span class="tag php">PHP</span>
                                     <span class="tag mongodb">MongoDB</span>
                                     <span class="tag html">HTML</span>
                                     <span class="tag css">CSS</span>
                                     <span class="tag jquery">jQuery</span>
                                     <span class="tag bootstrap">Bootstrap</span>
-                                </div> -->
-                                <h3>Tuneify</h3>
-                                <div class="project-links">
-                                    <a href="#tuneify" class="link-btn">Website</a>
-                                    <!-- <a href="#github" class="link-btn">Github</a> -->
-                                    <a href="#tuneify-details" class="link-btn">View Details</a>
                                 </div>
-                            </div>
-                        </a>
-                        <div class="project-description">
-                            <h3>Tuneify</h3>
-                            <p>Tuneify is a music streaming platform that lets users discover and enjoy songs, save their favorites, and create personalized playlists. It provides tailored recommendations based on genre and language preferences, ensuring a unique listening experience. The platform offers a smooth interface for effortless navigation and music enjoyment.</p>
-                            <div class="project-tags">
-                                <span class="tag php">PHP</span>
-                                <span class="tag mongodb">MongoDB</span>
-                                <span class="tag html">HTML</span>
-                                <span class="tag css">CSS</span>
-                                <span class="tag jquery">jQuery</span>
-                                <span class="tag bootstrap">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#tuneify">Website</a>
-                                <!-- <a href="#github">Github</a> -->
+                                <div class="project-links">
+                                    <a href="#tuneify">Website</a>
+                                    <!-- <a href="#github">Github</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
                     
 
-                    <div class="project-card">
-                        <a href="#quillify" class="project-link">
-                            <div class="menu-dots">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <img src="quillify.png" alt="Quillify">
-                            <div class="project-content">
-                                <!-- <div class="project-tags">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="project-card">
+                            <a href="#quillify" class="project-link">
+                               
+                                <img src="quillify.png" alt="Quillify">
+                                <div class="project-content">
+                                    <!-- <div class="project-tags">
+                                        <span class="tag laravel">Laravel</span>
+                                        <span class="tag mysql">MySQL</span>
+                                        <span class="tag html">HTML</span>
+                                        <span class="tag css">CSS</span>
+                                        <span class="tag jquery">jQuery</span>
+                                        <span class="tag bootstrap">Bootstrap</span>
+                                    </div> -->
+                                    <h3 style="font-size: 1.2em;">Quillify</h3>
+                                    <div class="project-links">
+                                        <a href="#quillify" class="link-btn">Website</a>
+                                        <!-- <a href="#github" class="link-btn">Github</a> -->
+                                        <a href="#quillify-details" class="link-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-description">
+                                <h3>Quillify</h3>
+                                <p>Quillify is an e-commerce platform for journal enthusiasts, offering a variety of journaling supplies. Users can browse products, add items to their cart, and complete purchases seamlessly. The website features a clean, functional design tailored for stationery lovers, making journaling supplies easily accessible and convenient to shop for.</p>
+                                <div class="project-tags">
                                     <span class="tag laravel">Laravel</span>
                                     <span class="tag mysql">MySQL</span>
                                     <span class="tag html">HTML</span>
                                     <span class="tag css">CSS</span>
                                     <span class="tag jquery">jQuery</span>
                                     <span class="tag bootstrap">Bootstrap</span>
-                                </div> -->
-                                <h3>Quillify</h3>
-                                <div class="project-links">
-                                    <a href="#quillify" class="link-btn">Website</a>
-                                    <!-- <a href="#github" class="link-btn">Github</a> -->
-                                    <a href="#quillify-details" class="link-btn">View Details</a>
                                 </div>
-                            </div>
-                        </a>
-                        <div class="project-description">
-                            <h3>Quillify</h3>
-                            <p>Quillify is an e-commerce platform for journal enthusiasts, offering a variety of journaling supplies. Users can browse products, add items to their cart, and complete purchases seamlessly. The website features a clean, functional design tailored for stationery lovers, making journaling supplies easily accessible and convenient to shop for.</p>
-                            <div class="project-tags">
-                                <span class="tag laravel">Laravel</span>
-                                <span class="tag mysql">MySQL</span>
-                                <span class="tag html">HTML</span>
-                                <span class="tag css">CSS</span>
-                                <span class="tag jquery">jQuery</span>
-                                <span class="tag bootstrap">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#quillify">Website</a>
-                                <!-- <a href="#github">Github</a> -->
+                                <div class="project-links">
+                                    <a href="#quillify">Website</a>
+                                    <!-- <a href="#github">Github</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     
-                    <div class="project-card">
-                        <a href="http://bakersdelight.great-site.net/" class="project-link">
-                            <div class="menu-dots">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <img src="BakersDelight.png" alt="Project 2">
-                            <div class="project-content">
-                                <!-- <div class="project-tags">
-                                    <span class="tag next">Next.js</span>
-                                    <span class="tag node">Node.js</span>
-                                    <span class="tag mongodb">MongoDB</span>
-                                </div> -->
-                                <h3>Bakers Delight</h3>
-                                <div class="project-links">
-                                    <a href="http://bakersdelight.great-site.net/" class="link-btn">Website</a>
-                                    <!-- <a href="#github" class="link-btn">Github</a> -->
-                                    <a href="#bakers-delight-details" class="link-btn">View Details</a>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="project-card">
+                            <a href="http://bakersdelight.great-site.net/" class="project-link">
+                                
+                                <img src="BakersDelight.png" alt="Project 2">
+                                <div class="project-content">
+                                    <!-- <div class="project-tags">
+                                        <span class="tag next">Next.js</span>
+                                        <span class="tag node">Node.js</span>
+                                        <span class="tag mongodb">MongoDB</span>
+                                    </div> -->
+                                    <h3 style="font-size: 1.2em;">Bakers Delight</h3>
+                                    <div class="project-links">
+                                        <a href="http://bakersdelight.great-site.net/" class="link-btn">Website</a>
+                                        <!-- <a href="#github" class="link-btn">Github</a> -->
+                                        <a href="#bakers-delight-details" class="link-btn">View Details</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <div class="project-description">
-                            <h3>Bakers Delight</h3>
-                            <p>BAKER'S DELIGHT is an online bakery shop that simplifies purchasing bakery products. Users can browse items in various categories, add them to their shopping cart, and register to complete purchases. Payment options include credit card or cash on delivery, with delivery details confirmed at checkout. The platform allows users to customize cakes by specifying size, shape, flavor, and delivery date. Other sweets can also be pre-ordered for specific dates, ensuring timely delivery. **BAKER'S DELIGHT** brings the convenience of an entire bakery shop online, offering a seamless shopping experience for customers while enabling sellers to reach a wider audience.</p>
-                            <div class="project-tags">
-                                <span class="tag php">PHP</span>
-                                <span class="tag mysql">MySQL</span>
-                                <span class="tag html">HTML</span>
-                                <span class="tag css">CSS</span>
-                                <span class="tag js">JavaScript</span>
-                                <span class="tag ajax">AJAX</span>
-                                <span class="tag jquery">jQuery</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="http://bakersdelight.great-site.net/">Website</a>
-                                <!-- <a href="#github">Github</a> -->
+                            </a>
+                            <div class="project-description">
+                                <h3>Bakers Delight</h3>
+                                <p>BAKER'S DELIGHT is an online bakery shop that simplifies purchasing bakery products. Users can browse items in various categories, add them to their shopping cart, and register to complete purchases. Payment options include credit card or cash on delivery, with delivery details confirmed at checkout. The platform allows users to customize cakes by specifying size, shape, flavor, and delivery date. Other sweets can also be pre-ordered for specific dates, ensuring timely delivery. **BAKER'S DELIGHT** brings the convenience of an entire bakery shop online, offering a seamless shopping experience for customers while enabling sellers to reach a wider audience.</p>
+                                <div class="project-tags">
+                                    <span class="tag php">PHP</span>
+                                    <span class="tag mysql">MySQL</span>
+                                    <span class="tag html">HTML</span>
+                                    <span class="tag css">CSS</span>
+                                    <span class="tag js">JavaScript</span>
+                                    <span class="tag ajax">AJAX</span>
+                                    <span class="tag jquery">jQuery</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="http://bakersdelight.great-site.net/">Website</a>
+                                    <!-- <a href="#github">Github</a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -478,137 +608,99 @@
         </section>
 
         <section class="contact" id="contact">
-            <h2>Let's Create Something Together</h2>
-            <p>I'm always open to discussing new projects and creative ideas.</p>
-            
-            <div class="contact-container">
-                <!-- Contact Form -->
+            <div class="container">
+                <h2 class="text-center">Let's Create Something Together</h2>
+                <p class="text-center">I'm always open to discussing new projects and creative ideas.</p>
                 
-
-                <!-- Contact Info Grid -->
-                <div class="contact-info-grid">
-                    <div class="info-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-envelope"></i>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 col-lg-3">
+                        <div class="info-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:varshamariyashaji2002@gmail.com">varshamariyashaji2002@gmail.com</a></p>
                         </div>
-                        <h3>Email</h3>
-                        <p><a href="mailto:varshamariyashaji2002@gmail.com">varshamariyashaji2002@gmail.com</a></p>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-phone"></i>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="info-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Phone</h3>
+                            <p><a href="tel:+918980710742">+91 8078107428</a></p>
                         </div>
-                        <h3>Phone</h3>
-                        <p><a href="tel:+918980710742">+91 8078107428</a></p>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="info-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Address</h3>
+                            <p>Perumpalliyazhath(H)<br>Koovapally P.O Karikulam<br>Kanjirappally, Kerala, India</p>
                         </div>
-                        <h3>Address</h3>
-                        <p>Perumpalliyazhath(H)<br>Koovapally P.O Karikulam<br>Kanjirappally, Kerala, India</p>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="icon-wrapper">
-                            <i class="fab fa-github"></i>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="info-card">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/varsha-shaji" target="_blank">@varsha-shaji</a></p>
                         </div>
-                        <h3>GitHub</h3>
-                        <p><a href="https://github.com/varsha-shaji" target="_blank">@varsha-shaji</a></p>
                     </div>
                 </div>
 
-<br><br>
+                <div class="row mt-5">
+                    <div class="col-md-8 mx-auto">
+                        <form class="contact-form">
+                            <div class="form-group" style="position: relative;">
+                                <input type="text" id="name" required style="padding-left: 60px;">
+                                <label for="name">Your Name</label>
+                                <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="position: relative;">
+                                <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
+                                    <i class="fas fa-envelope" style="color: white;"></i>
+                                </div>
+                                <div>
 
-                <form class="contact-form">
-                    <div class="form-group" style="position: relative;">
-                        <input type="text" id="name" required style="padding-left: 60px;">
-                        <label for="name">Your Name</label>
-                        <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
-                            <i class="fas fa-user"></i>
-                        </div>
+                                    <input type="email" id="email" required style="padding-left: 60px;">
+                                    <label for="email">Your Email</label>
+                                </div>
+                               
+                            </div>
+                            
+                            <div class="form-group" style="position: relative;">
+                                <input type="text" id="subject" required  style="padding-left: 60px;">
+                                <label for="subject">Subject</label>
+                                <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="position: relative;">
+                                <textarea id="message" required  style="padding-left: 60px;"></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
                     </div>
-                    
-                    <div class="form-group" style="position: relative;">
-                        <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
-                            <i class="fas fa-envelope" style="color: white;"></i>
-                        </div>
-                        <div>
-
-                            <input type="email" id="email" required style="padding-left: 60px;">
-                            <label for="email">Your Email</label>
-                        </div>
-                       
-                    </div>
-                    
-                    <div class="form-group" style="position: relative;">
-                        <input type="text" id="subject" required  style="padding-left: 60px;">
-                        <label for="subject">Subject</label>
-                        <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
-                            <i class="fas fa-tag"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group" style="position: relative;">
-                        <textarea id="message" required  style="padding-left: 60px;"></textarea>
-                        <label for="message">Your Message</label>
-                        <div class="icon-wrapper" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
-                            <i class="fas fa-comment"></i>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
+                </div>
             </div>
         </section>
     </div>
     
-    <script>
-        const professions = ["MCA Graduate", "Web Developer", "Full Stack Developer"];
-        let index = 0;
-        let currentText = '';
-        let isDeleting = false;
-        const typingSpeed = 150; // Speed of typing
-        const deletingSpeed = 100; // Speed of deleting
-        const pauseTime = 2000; // Pause time after each profession
-    
-        function type() {
-            const professionElement = document.getElementById('profession');
-    
-            // Determine the current text based on whether we are deleting or typing
-            if (isDeleting) {
-                currentText = professions[index].substring(0, currentText.length - 1);
-            } else {
-                currentText = professions[index].substring(0, currentText.length + 1);
-            }
-    
-            // Update the text content of the profession element
-            professionElement.textContent = currentText;
-    
-            // Check if we have finished typing the current profession
-            if (!isDeleting && currentText === professions[index]) {
-                setTimeout(() => {
-                    isDeleting = true; // Start deleting after a pause
-                }, pauseTime);
-            } 
-            // Check if we have finished deleting the current profession
-            else if (isDeleting && currentText === '') {
-                isDeleting = false; // Start typing the next profession
-                index = (index + 1) % professions.length; // Move to the next profession
-            }
-    
-            // Set the speed based on whether we are typing or deleting
-            const speed = isDeleting ? deletingSpeed : typingSpeed;
-            setTimeout(type, speed); // Call the function again after the speed delay
-        }
-    
-        type(); // Start the typing effect
-    </script>
     <script>
 
         
@@ -686,10 +778,10 @@
     <!-- Modal Structure -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <span class="close-button" style="cursor: pointer;">&times;</span>
             <h2 id="modalTitle">Project Title</h2>
-            <img id="modalImage" src="" alt="Project Image" style="width: 100%; height: auto;margin-top:-40px">
-            <p id="modalDescription" style="color: #000;font-size:13px">Project Description</p>
+            <img id="modalImage" src="" alt="Project Image" style="width: 100%; height: auto;">
+            <p id="modalDescription" style="color: #000;font-size:12px">Project Description</p>
             <div id="modalTechnologies"></div>
             <div id="modalLinks" style="display: flex; gap: 10px;"></div>
         </div>
@@ -725,7 +817,11 @@
         // Example of how to open the modal when clicking the "View Details" link
         document.querySelectorAll('.project-card .link-btn').forEach(button => {
             button.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
+                // Check if the clicked button is the "Website" link
+                if (e.target.textContent === 'Website') {
+                    return; // Do nothing, allowing the link to work as intended
+                }
+                e.preventDefault(); // Prevent default link behavior for other buttons
                 const projectCard = e.target.closest('.project-card');
                 const title = projectCard.querySelector('h3').innerText;
                 const image = projectCard.querySelector('img').src;
@@ -733,7 +829,6 @@
                 const technologies = Array.from(projectCard.querySelectorAll('.project-tags .tag')).map(tag => tag.innerText);
                 const links = [
                     { url: projectCard.querySelector('.project-links a').href, text: 'Website' },
-                  
                 ];
 
                 openModal(title, image, description, technologies, links);
@@ -741,8 +836,10 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
-      
+
       
 </body>
 </html>
